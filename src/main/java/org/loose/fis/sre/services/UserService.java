@@ -2,7 +2,9 @@ package org.loose.fis.sre.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.loose.fis.sre.exceptions.EmptyUsernameOrPasswordException;
 import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
+import org.loose.fis.sre.exceptions.UsernameAndPasswordDoNotMatchException;
 import org.loose.fis.sre.model.User;
 
 import java.nio.charset.StandardCharsets;
@@ -58,5 +60,20 @@ public class UserService {
         return md;
     }
 
+    public static void logInUser(String username, String password) throws EmptyUsernameOrPasswordException, UsernameAndPasswordDoNotMatchException {
+        checkLogin(username, password);
+    }
 
+    private static void checkLogin(String username, String password) throws EmptyUsernameOrPasswordException, UsernameAndPasswordDoNotMatchException {
+        if (username.isEmpty() || password.isEmpty())
+            throw new EmptyUsernameOrPasswordException();
+        else {
+            for (User user : userRepository.find()) {
+                if (Objects.equals(username, user.getUsername()) && Objects.equals(encodePassword(username, password), user.getPassword()))
+                    return;
+            }
+
+            throw new UsernameAndPasswordDoNotMatchException();
+        }
+    }
 }
