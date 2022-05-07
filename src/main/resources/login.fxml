@@ -35,14 +35,20 @@
                         <Font name="Verdana" size="17.0" />
                     </font>
                 </Label>
-                <TextField fx:id="username" layoutX="84.0" layoutY="130.0" prefHeight="5.0" prefWidth="151.0" promptText="username" />
+                <TextField fx:id="username" layoutX="84.0" layoutY="130.0" prefHeight="5.0" prefWidth="151.0" promptText="username">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></TextField>
                 <Label layoutX="84.0" layoutY="168.0" prefHeight="31.0" prefWidth="127.0" text="Password">
                     <font>
                         <Font name="Verdana" size="17.0" />
                     </font>
                 </Label>
-                <PasswordField fx:id="password" layoutX="85.0" layoutY="199.0" promptText="password" />
-                <Button fx:id="loginButton" layoutX="85.0" layoutY="267.0" mnemonicParsing="false" onAction="#handleLogInAction" style="-fx-background-color: #c1e1c1; -fx-border-color: #C0C0C0;" text="Log In">
+                <PasswordField fx:id="password" layoutX="85.0" layoutY="199.0" promptText="password">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></PasswordField>
+                <Button fx:id="loginButton" layoutX="85.0" layoutY="283.0" mnemonicParsing="false" onAction="#handleLogInAction" style="-fx-background-color: #c1e1c1; -fx-border-color: #C0C0C0;" text="Log In">
                     <font>
                         <Font size="13.0" />
                     </font>
