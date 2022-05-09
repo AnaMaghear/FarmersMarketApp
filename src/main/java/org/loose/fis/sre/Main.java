@@ -20,6 +20,11 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         initDirectory();
         UserService.initDatabase();
+
+        Image icon = new Image("img/icon.png");
+
+        primaryStage.getIcons().add(icon);
+
         stage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("register.fxml"));
 
@@ -28,7 +33,7 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    public void changeScene(String fxml) throws IOException{
+    public void changeScene(String fxml) throws IOException {
         Parent pane = FXMLLoader.load(getClass().getClassLoader().getResource(fxml));
         stage.getScene().setRoot(pane);
     }
