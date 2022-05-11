@@ -22,9 +22,9 @@ public class Main extends Application {
         UserService.initDatabase();
 
         Image icon = new Image("img/icon.png");
-
         primaryStage.getIcons().add(icon);
 
+        primaryStage.setResizable(false);
         stage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("register.fxml"));
 
