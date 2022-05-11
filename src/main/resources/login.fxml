@@ -61,6 +61,14 @@
                   <Font name="Arial Rounded MT Bold" size="13.0" />
                </font>
             </Text>
+            <Text fx:id="registerLink" layoutX="84.0" layoutY="336.0" onMouseClicked="#handleRegisterAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Not on Farmers Market yet? Register an account!" wrappingWidth="172.13671875">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font>
+            </Text>
             </children>
         </AnchorPane>
     </center>
