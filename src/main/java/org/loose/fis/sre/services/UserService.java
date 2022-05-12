@@ -5,6 +5,7 @@ import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.exceptions.EmptyUsernameOrPasswordException;
 import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
 import org.loose.fis.sre.exceptions.UsernameAndPasswordDoNotMatchException;
+import org.loose.fis.sre.model.Consumer;
 import org.loose.fis.sre.model.Farmer;
 import org.loose.fis.sre.model.Product;
 import org.loose.fis.sre.model.User;
@@ -21,6 +22,7 @@ public class UserService {
 
     private static ObjectRepository<User> userRepository;
     private static ObjectRepository<Farmer> farmerRepository;
+    private static ObjectRepository<Consumer> consumerRepository;
     private static ObjectRepository<Product> productRepository;
     public static void initDatabase() {
         Nitrite database = Nitrite.builder()
@@ -29,7 +31,12 @@ public class UserService {
 
         userRepository = database.getRepository(User.class);
         farmerRepository = database.getRepository(Farmer.class);
+        consumerRepository = database.getRepository(Consumer.class);
         productRepository = database.getRepository(Product.class);
+    }
+
+    public static ObjectRepository<Consumer> getConsumerRepository() {
+        return consumerRepository;
     }
 
     public static ObjectRepository<User> getUserRepository() {
