@@ -31,6 +31,9 @@ public class Farmer {
         this.availabilityStatus = availabilityStatus;
     }
 
+    public Farmer() {
+    }
+
     public String getUsername() {
         return username;
     }

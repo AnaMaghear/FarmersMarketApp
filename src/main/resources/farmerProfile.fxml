@@ -54,7 +54,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Text fx:id="errorMessage" fill="RED" layoutX="173.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0">
+      <Text fx:id="errorMessage" fill="RED" layoutX="29.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font></Text>
