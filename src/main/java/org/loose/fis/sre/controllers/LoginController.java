@@ -8,6 +8,8 @@ import javafx.scene.text.Text;
 import org.loose.fis.sre.Main;
 import org.loose.fis.sre.exceptions.EmptyUsernameOrPasswordException;
 import org.loose.fis.sre.exceptions.UsernameAndPasswordDoNotMatchException;
+import org.loose.fis.sre.services.UserNameTransporterService;
+import org.loose.fis.sre.services.UserRoleTransporterService;
 import org.loose.fis.sre.services.UserService;
 
 import java.io.IOException;
@@ -31,8 +33,17 @@ public class LoginController {
     public void handleLogInAction() {
         try {
             UserService.logInUser(username.getText(), password.getText());
-            wrongLogin.setText("Logged In successfully");
-        } catch (EmptyUsernameOrPasswordException | UsernameAndPasswordDoNotMatchException ex) {
+            String role = UserService.getRoleByUsername(username.getText());
+
+            UserNameTransporterService.setUsername(username);
+
+            Main m = new Main();
+            m.changeScene("farmerProfile.fxml");
+            if (role.equals("Consumer"))
+                m.changeScene("consumerProfile.fxml");
+            else
+                m.changeScene("farmerProfile.fxml");
+        } catch (EmptyUsernameOrPasswordException | UsernameAndPasswordDoNotMatchException | IOException ex) {
             wrongLogin.setText(ex.getMessage());
         }
     }

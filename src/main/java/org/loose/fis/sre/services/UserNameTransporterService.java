@@ -5,6 +5,7 @@ import javafx.scene.control.TextField;
 
 public class UserNameTransporterService {
     private static boolean usernameAvailable = false;
+
     @FXML
     private static TextField username;
 
