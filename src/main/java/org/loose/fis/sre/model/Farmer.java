@@ -17,6 +17,10 @@ public class Farmer {
     private boolean availabilityStatus;
     private ArrayList<Product> products;
 
+    public ArrayList<Product> getProducts() {
+        return products;
+    }
+
     public Farmer(String username, String firstName, String lastName, String description, String address, String phone, boolean availabilityStatus) {
         this.username = username;
         this.firstName = firstName;
