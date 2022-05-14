@@ -10,6 +10,7 @@ import org.loose.fis.sre.model.Product;
 import org.loose.fis.sre.services.UserNameTransporterService;
 import org.loose.fis.sre.services.UserService;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class FarmerProductsListController {
@@ -35,5 +36,11 @@ public class FarmerProductsListController {
 
     @FXML
     public void handleAddProductAction() {
+        try {
+            Main m = new Main();
+            m.changeScene("addProductForm.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
