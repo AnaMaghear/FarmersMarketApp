@@ -100,4 +100,13 @@ public class UserService {
             throw new UsernameAndPasswordDoNotMatchException();
         }
     }
+
+    public static String getRoleByUsername(String username) throws UsernameAndPasswordDoNotMatchException {
+        for (User user : userRepository.find()) {
+            if (Objects.equals(username, user.getUsername()))
+                return user.getRole();
+        }
+
+        throw new UsernameAndPasswordDoNotMatchException();
+    }
 }
