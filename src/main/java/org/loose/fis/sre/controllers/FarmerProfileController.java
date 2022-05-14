@@ -37,7 +37,7 @@ public class FarmerProfileController {
     public void handleEditAction() {
         try {
             Main m = new Main();
-            m.changeScene("editFarmer");
+            m.changeScene("farmerEdit.fxml");
         } catch (IOException e) {
             errorMessage.setText(e.getMessage());
         }
@@ -47,7 +47,7 @@ public class FarmerProfileController {
     public void handleProductsAction() {
         try {
             Main m = new Main();
-            m.changeScene("editFarmer");
+            m.changeScene("farmerProductsList.fxml");
         } catch (IOException e) {
             errorMessage.setText(e.getMessage());
         }
@@ -57,7 +57,7 @@ public class FarmerProfileController {
     public void handleOrdersAction() {
         try {
             Main m = new Main();
-            m.changeScene("editFarmer");
+            m.changeScene("farmerOrdersList.fxml");
         } catch (IOException e) {
             errorMessage.setText(e.getMessage());
         }

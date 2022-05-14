@@ -10,19 +10,19 @@ import java.util.concurrent.atomic.AtomicLong;
 public class ProductService {
     private static ObjectRepository<Product> productRepository = UserService.getProductRepository();
     private static ObjectRepository<Farmer> farmerRepository = UserService.getFarmerRepository();
-    final AtomicLong identifierGenerator = new AtomicLong(1);
+    final static AtomicLong identifierGenerator = new AtomicLong(1);
 
-    public void addProduct(String name, String description, double quantity, double pricePerUnit) {
+    public static void addProduct(String name, String description, double quantity, double pricePerUnit) {
         productRepository.insert(new Product(identifierGenerator.incrementAndGet(), name, description, quantity, pricePerUnit));
     }
 
-    public void removeProduct(long id) {
+    public static void removeProduct(long id) {
         for (Product product : productRepository.find())
             if (product.getId() == id)
                 productRepository.remove(product);
     }
 
-    public ArrayList<Product> filter(String search, String filterBy) {
+    public static ArrayList<Product> filter(String search, String filterBy) {
         ArrayList<Product> shownProducts = new ArrayList<Product>();
         if (filterBy.equals("product")) {
             for (Product p : productRepository.find())
