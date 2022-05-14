@@ -13,6 +13,7 @@ import org.loose.fis.sre.model.User;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Objects;
 
 import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
@@ -108,5 +109,14 @@ public class UserService {
         }
 
         throw new UsernameAndPasswordDoNotMatchException();
+    }
+
+    public static ArrayList<Product> getAllProductsByUsername(String username) {
+        for (Farmer farmer : farmerRepository.find())
+            if (Objects.equals(username, farmer.getUsername())) {
+                return farmer.getProducts();
+            }
+
+        return new ArrayList<>();
     }
 }

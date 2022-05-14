@@ -19,7 +19,6 @@ public class UserNameTransporterService {
     }
 
     public static TextField getUsername() {
-        usernameAvailable = false;
         return username;
     }
 }
