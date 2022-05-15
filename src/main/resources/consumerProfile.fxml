@@ -58,7 +58,10 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <ListView fx:id="listView" layoutX="26.0" layoutY="69.0" prefHeight="292.0" prefWidth="452.0" />
+      <ListView fx:id="listView" layoutX="26.0" layoutY="69.0" prefHeight="292.0" prefWidth="452.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ListView>
       <Text fx:id="errorMessage" layoutX="26.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" />
    </children>
 </Pane>
