@@ -46,6 +46,29 @@ public class FarmerService {
         }
     }
 
+    public static Farmer getFarmerByUsername(String username){
+        for(Farmer f : farmerRepository.find())
+            if(Objects.equals(f.getUsername(), username))
+                return f;
+        return new Farmer();
+    }
+
+    public static void updateFarmerByUsername(String username, String firstName, String lastName, String description, String address, String phone, boolean status) throws EmptyFieldsException {
+            checkIfFieldsEmpty(username, firstName, lastName, description, address, phone);
+            for (Farmer f : farmerRepository.find()) {
+                if (Objects.equals(username, f.getUsername())) {
+                    f.setFirstName(firstName);
+                    f.setLastName(lastName);
+                    f.setDescription(description);
+                    f.setAddress(address);
+                    f.setPhone(phone);
+                    f.setAvailabilityStatus(status);
+
+                    farmerRepository.update(f);
+                }
+        }
+    }
+  
     public static ArrayList<Farmer> filter(String search, String filterBy) {
         ArrayList<Farmer> shownFarmers = new ArrayList<Farmer>();
         if (filterBy.equals("product")) {

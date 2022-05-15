@@ -121,6 +121,10 @@ public class Farmer {
                 products.set(products.indexOf(p), editedProduct);
     }
 
+    public void removeProduct(NitriteId id) {
+        products.removeIf(p -> Objects.equals(p.getId(), id));
+    }
+  
     @Override
     public String toString() {
         return "" + firstName + " " +  lastName + "; " + address;

@@ -61,8 +61,6 @@ public class ProductDetailsController {
         } catch (NotANumberException | EmptyFieldsException | IOException e) {
             errorMessage.setText(e.getMessage());
         }
-
-
     }
 
     @FXML
@@ -77,6 +75,13 @@ public class ProductDetailsController {
 
     @FXML
     public void handleRemoveAction() {
+        ProductService.removeProduct(productId);
 
+        Main m = new Main();
+        try {
+            m.changeScene("farmerProductsList.fxml");
+        } catch (IOException e) {
+            errorMessage.setText(e.getMessage());
+        }
     }
 }
