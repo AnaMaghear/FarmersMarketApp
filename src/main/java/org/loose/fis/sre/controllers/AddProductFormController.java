@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import org.loose.fis.sre.Main;
 import org.loose.fis.sre.exceptions.EmptyFieldsException;
+import org.loose.fis.sre.exceptions.NotANumberException;
 import org.loose.fis.sre.model.Farmer;
 import org.loose.fis.sre.model.Product;
 import org.loose.fis.sre.services.FarmerService;
@@ -43,7 +44,7 @@ public class AddProductFormController {
 
             Main m = new Main();
             m.changeScene("farmerProductsList.fxml");
-        } catch (EmptyFieldsException | IOException ex) {
+        } catch (EmptyFieldsException | IOException | NotANumberException ex) {
             errorMessage.setText(ex.getMessage());
         }
     }

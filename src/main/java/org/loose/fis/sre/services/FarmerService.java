@@ -3,6 +3,7 @@ package org.loose.fis.sre.services;
 import javafx.scene.control.Toggle;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.exceptions.EmptyFieldsException;
+import org.loose.fis.sre.exceptions.NotANumberException;
 import org.loose.fis.sre.model.Farmer;
 import org.loose.fis.sre.model.Product;
 
@@ -24,8 +25,6 @@ public class FarmerService {
     }
 
     public static ArrayList<Product> getAllProductsByUsername(String username) {
-        System.out.println("yeh");
-
         for (Farmer farmer : farmerRepository.find()) {
             if (Objects.equals(username, farmer.getUsername())) {
                 return farmer.getProducts();
@@ -35,7 +34,7 @@ public class FarmerService {
         return new ArrayList<>();
     }
 
-    public static void addProductToFarmer(String username, String name, String description, String quantity, String price) throws EmptyFieldsException, IOException {
+    public static void addProductToFarmer(String username, String name, String description, String quantity, String price) throws EmptyFieldsException, NotANumberException {
         Product p = ProductService.addProduct(name, description, quantity, price);
 
         for (Farmer farmer : farmerRepository.find()) {

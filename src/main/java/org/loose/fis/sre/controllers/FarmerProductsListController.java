@@ -1,6 +1,8 @@
 package org.loose.fis.sre.controllers;
 
 import javafx.beans.InvalidationListener;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import org.loose.fis.sre.Main;
 import org.loose.fis.sre.model.Product;
 import org.loose.fis.sre.services.FarmerService;
+import org.loose.fis.sre.services.ProductIdTransporterService;
 import org.loose.fis.sre.services.UserNameTransporterService;
 
 import java.io.IOException;
@@ -34,8 +37,24 @@ public class FarmerProductsListController {
         productsList.getItems().clear();
         ArrayList<Product> products = FarmerService.getAllProductsByUsername(username.getText());
 
-        if (!products.isEmpty())
+        if (!products.isEmpty()) {
             productsList.getItems().addAll(products);
+
+            productsList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Product>() {
+                @Override
+                public void changed(ObservableValue<? extends Product> observable, Product oldValue, Product newValue) {
+                    Product currentProduct = productsList.getSelectionModel().getSelectedItem();
+                    ProductIdTransporterService.setProductId(currentProduct.getId());
+
+                    Main m = new Main();
+                    try {
+                        m.changeScene("productDetails.fxml");
+                    } catch (IOException e) {
+                        errorMessage.setText(e.getMessage());
+                    }
+                }
+            });
+        }
     }
 
     @FXML

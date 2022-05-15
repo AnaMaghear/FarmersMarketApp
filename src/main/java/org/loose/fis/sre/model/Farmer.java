@@ -1,5 +1,6 @@
 package org.loose.fis.sre.model;
 
+import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.objects.Id;
 
 import java.io.IOException;
@@ -110,7 +111,13 @@ public class Farmer {
         return Objects.hash(username, firstName, lastName, description, address, phone, availabilityStatus, products);
     }
 
-    public void addProduct(Product p) throws IOException {
+    public void addProduct(Product p) {
         products.add(p);
+    }
+
+    public void updateProduct(NitriteId id, Product editedProduct) {
+        for (Product p : products)
+            if (Objects.equals(id, p.getId()))
+                products.set(products.indexOf(p), editedProduct);
     }
 }
