@@ -1,14 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.loose.fis.sre.controllers.FarmerEditController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.FarmerEditController">
+   <children>
+      <TextField fx:id="lastName" layoutX="22.0" layoutY="133.0" prefHeight="13.0" prefWidth="134.0" />
+      <TextField fx:id="firstName" layoutX="22.0" layoutY="85.0" prefHeight="13.0" prefWidth="134.0" />
+      <Label layoutX="22.0" layoutY="66.0" text="First name">
+         <font>
+            <Font name="Verdana" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="22.0" layoutY="114.0" text="Last name">
+         <font>
+            <Font name="Verdana" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="22.0" layoutY="162.0" text="Description">
+         <font>
+            <Font name="Verdana" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="22.0" layoutY="256.0" text="Address">
+         <font>
+            <Font name="Verdana" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="phone" layoutX="22.0" layoutY="323.0" prefHeight="13.0" prefWidth="134.0" />
+      <Label layoutX="22.0" layoutY="304.0" text="Phone">
+         <font>
+            <Font name="Verdana" size="12.0" />
+         </font>
+      </Label>
+      <Button fx:id="confirmButton" layoutX="205.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleConfirmAction" text="Confirm" />
+      <Button fx:id="statusButton" layoutX="22.0" layoutY="359.0" mnemonicParsing="false" onAction="#toggleStatus" text="Availability Status" />
+      <TextArea fx:id="description" layoutX="23.0" layoutY="181.0" prefHeight="70.0" prefWidth="295.0" />
+      <TextField fx:id="address" layoutX="22.0" layoutY="275.0" prefHeight="25.0" prefWidth="297.0" />
+      <Text fx:id="availabilityText" layoutX="145.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+   </children>
 </AnchorPane>

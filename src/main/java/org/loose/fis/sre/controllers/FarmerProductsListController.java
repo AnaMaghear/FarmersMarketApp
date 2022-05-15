@@ -28,7 +28,7 @@ public class FarmerProductsListController {
     @FXML
     private Button addProductButton;
     @FXML
-    private Button seeProductsButton;
+    private Button backButton;
     @FXML
     private Text errorMessage;
     @FXML
@@ -63,7 +63,17 @@ public class FarmerProductsListController {
             Main m = new Main();
             m.changeScene("addProductForm.fxml");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            errorMessage.setText(e.getMessage());
+        }
+    }
+
+    @FXML
+    public void handleBackAction() {
+        try {
+            Main m = new Main();
+            m.changeScene("farmerProfile.fxml");
+        } catch (IOException e) {
+            errorMessage.setText(e.getMessage());
         }
     }
 }
