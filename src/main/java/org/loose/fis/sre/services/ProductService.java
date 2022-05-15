@@ -39,24 +39,18 @@ public class ProductService {
     }
 
     public static void removeProduct(NitriteId id) {
+        for (Farmer f : farmerRepository.find()) {
+            if (f.getProducts() == null)
+                continue;
+
+            f.removeProduct(id);
+
+            farmerRepository.update(f);
+        }
+
         for (Product product : productRepository.find())
             if (product.getId() == id)
                 productRepository.remove(product);
-    }
-
-    public static ArrayList<Product> filter(String search, String filterBy) {
-        ArrayList<Product> shownProducts = new ArrayList<Product>();
-        if (filterBy.equals("product")) {
-            for (Product p : productRepository.find())
-                if (p.getName().contains(search))
-                    shownProducts.add(p);
-        } else if (filterBy.equals("county")) {
-            for (Farmer f : farmerRepository.find())
-                if (f.getAddress().contains(search))
-                    shownProducts.addAll(f.getProducts());
-        }
-
-        return shownProducts;
     }
 
     public static Product getProductById(NitriteId id) throws Exception {

@@ -120,4 +120,8 @@ public class Farmer {
             if (Objects.equals(id, p.getId()))
                 products.set(products.indexOf(p), editedProduct);
     }
+
+    public void removeProduct(NitriteId id) {
+        products.removeIf(p -> Objects.equals(p.getId(), id));
+    }
 }
