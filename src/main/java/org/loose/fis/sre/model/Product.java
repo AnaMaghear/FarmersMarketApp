@@ -7,13 +7,12 @@ import java.util.Objects;
 public class Product {
 
     @Id
-    private int id;
+    private long id;
     private String name;
     private String description;
     private double quantity;
     private double pricePerUnit;
-
-    public Product(int id, String name, String description, double quantity, double pricePerUnit) {
+    public Product(long id, String name, String description, double quantity, double pricePerUnit) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -21,11 +20,11 @@ public class Product {
         this.pricePerUnit = pricePerUnit;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -10,8 +10,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.ConsumerProfileController">
    <children>
       <ChoiceBox fx:id="selectChoiceBox" layoutX="26.0" layoutY="42.0" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #FFEFD5; -fx-border-color: #000000;">
          <cursor>
@@ -26,7 +27,7 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <Button fx:id="searchButton" layoutX="434.0" layoutY="41.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="43.0" style="-fx-background-color: #ADD8E6; -fx-border-color: #000000;" text="🔎">
+      <Button fx:id="searchButton" layoutX="434.0" layoutY="41.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="26.0" prefWidth="43.0" style="-fx-background-color: #ADD8E6; -fx-border-color: #000000;" text="🔎">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -41,7 +42,7 @@
             <Image url="@img/open-book-tutorial-vector-drawing-isolated-white-background-cartoon-doodle-cute-colorful-illustrations-funny-works-art-155670262.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="viewHistoryButton" layoutX="483.0" layoutY="59.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: #FFEFD5; -fx-border-color: #000000;" text="View history">
+      <Button fx:id="viewHistoryButton" layoutX="483.0" layoutY="59.0" mnemonicParsing="false" onAction="#handleViewHistory" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: #FFEFD5; -fx-border-color: #000000;" text="View history">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
@@ -49,7 +50,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="editProfileButton" layoutX="483.0" layoutY="98.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: #FFEFD5; -fx-border-color: #000000;" text="Edit profile">
+      <Button fx:id="editProfileButton" layoutX="483.0" layoutY="98.0" mnemonicParsing="false" onAction="#handleEditProfile" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: #FFEFD5; -fx-border-color: #000000;" text="Edit profile">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
@@ -58,5 +59,6 @@
          </cursor>
       </Button>
       <ListView fx:id="listView" layoutX="26.0" layoutY="69.0" prefHeight="292.0" prefWidth="452.0" />
+      <Text fx:id="errorMessage" layoutX="26.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" />
    </children>
 </Pane>
