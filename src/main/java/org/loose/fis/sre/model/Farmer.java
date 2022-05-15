@@ -1,7 +1,9 @@
 package org.loose.fis.sre.model;
 
+import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.objects.Id;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -29,6 +31,8 @@ public class Farmer {
         this.address = address;
         this.phone = phone;
         this.availabilityStatus = availabilityStatus;
+        
+        products = new ArrayList<>();
     }
 
     public Farmer() {
@@ -36,6 +40,10 @@ public class Farmer {
 
     public String getUsername() {
         return username;
+    }
+
+    public void setProducts(ArrayList<Product> products) {
+        this.products = products;
     }
 
     public void setUsername(String username) {
@@ -101,5 +109,15 @@ public class Farmer {
     @Override
     public int hashCode() {
         return Objects.hash(username, firstName, lastName, description, address, phone, availabilityStatus, products);
+    }
+
+    public void addProduct(Product p) {
+        products.add(p);
+    }
+
+    public void updateProduct(NitriteId id, Product editedProduct) {
+        for (Product p : products)
+            if (Objects.equals(id, p.getId()))
+                products.set(products.indexOf(p), editedProduct);
     }
 }

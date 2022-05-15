@@ -1,18 +1,21 @@
 package org.loose.fis.sre.model;
 
+import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.objects.Id;
 
+import java.text.MessageFormat;
 import java.util.Objects;
 
 public class Product {
 
     @Id
-    private long id;
+    private NitriteId id;
     private String name;
     private String description;
     private double quantity;
     private double pricePerUnit;
-    public Product(long id, String name, String description, double quantity, double pricePerUnit) {
+
+    public Product(String name, String description, double quantity, double pricePerUnit) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -20,12 +23,11 @@ public class Product {
         this.pricePerUnit = pricePerUnit;
     }
 
-    public long getId() {
-        return id;
+    public Product() {
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public NitriteId getId() {
+        return id;
     }
 
     public String getName() {
@@ -71,5 +73,10 @@ public class Product {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, description, quantity, pricePerUnit);
+    }
+
+    @Override
+    public String toString() {
+        return MessageFormat.format("{0}; {1}; {2} unitati; {3} RON/unitate", name, description, quantity, pricePerUnit);
     }
 }
