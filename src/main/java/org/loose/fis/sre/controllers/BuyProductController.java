@@ -6,9 +6,12 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import org.loose.fis.sre.Main;
+import org.loose.fis.sre.exceptions.EmptyFieldsException;
+import org.loose.fis.sre.exceptions.NotANumberException;
+import org.loose.fis.sre.exceptions.QuantityNotAvailableException;
+import org.loose.fis.sre.model.Consumer;
 import org.loose.fis.sre.model.Product;
-import org.loose.fis.sre.services.ProductIdTransporterService;
-import org.loose.fis.sre.services.ProductService;
+import org.loose.fis.sre.services.*;
 
 import java.io.IOException;
 
@@ -55,6 +58,18 @@ public class BuyProductController {
 
     @FXML
     public void handleConfirmAction() {
+        Product p = null;
+        try {
+            p = ProductService.getProductById(ProductIdTransporterService.getProductId());
+            String username = UserNameTransporterService.getUsername().getText();
+            Consumer c = ConsumerService.getConsumerByUsername(username);
+            OrderService.addOrder(p, c, desiredAmount.getText(), (String) pickUp.getSelectionModel().getSelectedItem());
+            Main m = new Main();
+            m.changeScene("farmerDetails.fxml");
+        } catch (Exception e) {
+            errorMessage.setText(e.getMessage());
+        }
+
 
     }
 

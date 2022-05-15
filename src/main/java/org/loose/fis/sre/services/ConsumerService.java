@@ -5,6 +5,8 @@ import org.loose.fis.sre.exceptions.EmptyFieldsException;
 import org.loose.fis.sre.model.Consumer;
 import org.loose.fis.sre.model.Farmer;
 
+import java.util.Objects;
+
 public class ConsumerService {
     private static ObjectRepository<Consumer> consumerRepository = UserService.getConsumerRepository();
 
@@ -16,6 +18,13 @@ public class ConsumerService {
     private static void checkIfFieldsEmpty(String username, String firstName, String lastName, String address, String phone) throws EmptyFieldsException {
         if (username.isEmpty() || firstName.isEmpty() || lastName.isEmpty() || address.isEmpty() || phone.isEmpty())
             throw new EmptyFieldsException();
+    }
+
+    public static Consumer getConsumerByUsername(String username){
+        for (Consumer c : consumerRepository.find())
+            if(Objects.equals(c.getUsername(), username))
+                return c;
+        return new Consumer();
     }
 
 }
