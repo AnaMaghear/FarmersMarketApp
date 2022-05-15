@@ -9,19 +9,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BuyProduct">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.BuyProductController">
    <children>
-      <Text layoutX="55.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NumeProdus">
+      <Text fx:id="productName" layoutX="55.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font name="Arial Rounded MT Bold" size="24.0" />
          </font>
       </Text>
-      <Text layoutX="55.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" wrappingWidth="98.412109375">
+      <Text layoutX="55.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" wrappingWidth="98.412109375">
          <font>
             <Font name="Georgia" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="149.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+      <Text fx:id="description" layoutX="142.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="176.0">
          <font>
             <Font name="Georgia" size="14.0" />
          </font>
@@ -31,7 +31,7 @@
             <Font name="Georgia" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="183.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+      <Text fx:id="price" layoutX="153.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="164.0">
          <font>
             <Font name="Georgia" size="14.0" />
          </font>
@@ -41,24 +41,24 @@
             <Font name="Georgia" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="154.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+      <Text fx:id="quantityAvailable" layoutX="183.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="142.0">
          <font>
             <Font name="Georgia" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="55.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <TextField layoutX="56.0" layoutY="246.0" />
-      <Text layoutX="55.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The desiered amount" wrappingWidth="128.412109375">
+      <Text fx:id="errorMessage" fill="#e01212" layoutX="55.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <TextField fx:id="desiredAmount" layoutX="56.0" layoutY="246.0" />
+      <Text layoutX="55.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The desired amount" wrappingWidth="128.412109375">
          <font>
             <Font name="Georgia" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="56.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pick-up" wrappingWidth="58.779937744140625">
+      <Text layoutX="55.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Delivery method" wrappingWidth="110.77993774414062">
          <font>
             <Font name="Georgia" size="14.0" />
          </font>
       </Text>
-      <Button layoutX="53.0" layoutY="353.0" mnemonicParsing="false" text="Confirm">
+      <Button fx:id="confirmButton" layoutX="53.0" layoutY="353.0" mnemonicParsing="false" text="Confirm">
          <font>
             <Font name="Verdana" size="12.0" />
          </font>
@@ -68,7 +68,10 @@
             <Image url="@img/realistic-empty-supermarket-shopping-cart-isolated-white_53562-6809.jpg" />
          </image>
       </ImageView>
-      <ChoiceBox layoutX="56.0" layoutY="310.0" prefWidth="150.0" />
-      <Button layoutX="142.0" layoutY="352.0" mnemonicParsing="false" text="Back" />
+      <ChoiceBox fx:id="pickUp" layoutX="56.0" layoutY="310.0" prefWidth="150.0" />
+      <Button fx:id="backButton" layoutX="142.0" layoutY="352.0" mnemonicParsing="false" onAction="#handleBackButton" text="Back">
+         <font>
+            <Font name="Verdana" size="12.0" />
+         </font></Button>
    </children>
 </AnchorPane>

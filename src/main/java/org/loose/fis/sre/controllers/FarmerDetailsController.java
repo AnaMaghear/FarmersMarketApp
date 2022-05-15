@@ -61,7 +61,7 @@ public class FarmerDetailsController {
 
                     Main m = new Main();
                     try {
-                        m.changeScene("productDetails.fxml");
+                        m.changeScene("buyProduct.fxml");
                     } catch (IOException e) {
                         errorMessage.setText(e.getMessage());
                     }
