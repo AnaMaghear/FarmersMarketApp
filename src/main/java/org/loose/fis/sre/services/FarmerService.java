@@ -91,10 +91,4 @@ public class FarmerService {
         return shownFarmers;
     }
 
-    public static Farmer getFarmerByUsername(String username){
-        for(Farmer f : farmerRepository.find())
-            if(Objects.equals(f.getUsername(), username))
-                return f;
-        return new Farmer();
-    }
 }
