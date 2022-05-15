@@ -1,6 +1,8 @@
 package org.loose.fis.sre.services;
 
+import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.loose.fis.sre.exceptions.EmptyFieldsException;
 import org.loose.fis.sre.model.Farmer;
 import org.loose.fis.sre.model.Product;
 
@@ -10,13 +12,22 @@ import java.util.concurrent.atomic.AtomicLong;
 public class ProductService {
     private static ObjectRepository<Product> productRepository = UserService.getProductRepository();
     private static ObjectRepository<Farmer> farmerRepository = UserService.getFarmerRepository();
-    final static AtomicLong identifierGenerator = new AtomicLong(1);
 
-    public static void addProduct(String name, String description, double quantity, double pricePerUnit) {
-        productRepository.insert(new Product(identifierGenerator.incrementAndGet(), name, description, quantity, pricePerUnit));
+    public static Product addProduct(String name, String description, String quantity, String pricePerUnit) throws EmptyFieldsException {
+        checkIfFieldsAreEmpty(name, description, quantity, pricePerUnit);
+
+        Product p = new Product(name, description, Double.parseDouble(quantity), Double.parseDouble(pricePerUnit));
+        productRepository.insert(p);
+
+        return p;
     }
 
-    public static void removeProduct(long id) {
+    private static void checkIfFieldsAreEmpty(String name, String description, String quantity, String pricePerUnit) throws EmptyFieldsException {
+        if (name.isEmpty() || description.isEmpty() || quantity.isEmpty() || pricePerUnit.isEmpty())
+            throw new EmptyFieldsException();
+    }
+
+    public static void removeProduct(NitriteId id) {
         for (Product product : productRepository.find())
             if (product.getId() == id)
                 productRepository.remove(product);

@@ -110,13 +110,4 @@ public class UserService {
 
         throw new UsernameAndPasswordDoNotMatchException();
     }
-
-    public static ArrayList<Product> getAllProductsByUsername(String username) {
-        for (Farmer farmer : farmerRepository.find())
-            if (Objects.equals(username, farmer.getUsername())) {
-                return farmer.getProducts();
-            }
-
-        return new ArrayList<>();
-    }
 }

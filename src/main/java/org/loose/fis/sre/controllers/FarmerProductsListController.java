@@ -1,17 +1,21 @@
 package org.loose.fis.sre.controllers;
 
+import javafx.beans.InvalidationListener;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import org.jetbrains.annotations.NotNull;
 import org.loose.fis.sre.Main;
 import org.loose.fis.sre.model.Product;
+import org.loose.fis.sre.services.FarmerService;
 import org.loose.fis.sre.services.UserNameTransporterService;
-import org.loose.fis.sre.services.UserService;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.*;
 
 public class FarmerProductsListController {
     @FXML
@@ -28,9 +32,9 @@ public class FarmerProductsListController {
     public void initialize() {
         username = UserNameTransporterService.getUsername();
         productsList.getItems().clear();
-        ArrayList<Product> products = UserService.getAllProductsByUsername(username.getText());
+        ArrayList<Product> products = FarmerService.getAllProductsByUsername(username.getText());
 
-        if (products != null)
+        if (!products.isEmpty())
             productsList.getItems().addAll(products);
     }
 
