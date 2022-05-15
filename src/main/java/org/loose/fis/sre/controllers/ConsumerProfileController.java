@@ -9,6 +9,7 @@ import javafx.scene.text.Text;
 import org.loose.fis.sre.Main;
 import org.loose.fis.sre.model.Farmer;
 import org.loose.fis.sre.model.Product;
+import org.loose.fis.sre.services.FarmerService;
 import org.loose.fis.sre.services.ProductService;
 
 import java.io.IOException;
@@ -40,7 +41,7 @@ public class ConsumerProfileController {
             if(selectChoiceBox.getSelectionModel().isEmpty())
                 throw new Exception("No filter selected");
             ArrayList<Farmer> farmers = new ArrayList<Farmer>();
-            farmers = ProductService.filter(searchBar.getText(), (String)selectChoiceBox.getSelectionModel().getSelectedItem());
+            farmers = FarmerService.filter(searchBar.getText(), (String)selectChoiceBox.getSelectionModel().getSelectedItem());
             listView.getItems().clear();
             listView.getItems().addAll(farmers);
         } catch (Exception e) {
