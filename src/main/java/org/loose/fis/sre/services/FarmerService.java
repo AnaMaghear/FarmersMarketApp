@@ -70,7 +70,7 @@ public class FarmerService {
     }
   
     public static ArrayList<Farmer> filter(String search, String filterBy) {
-        ArrayList<Farmer> shownFarmers = new ArrayList<Farmer>();
+        ArrayList<Farmer> shownFarmers = new ArrayList<>();
         if (filterBy.equals("product")) {
             for(Farmer f : farmerRepository.find()) {
                 if (f.getProducts() != null && f.isAvailabilityStatus())
