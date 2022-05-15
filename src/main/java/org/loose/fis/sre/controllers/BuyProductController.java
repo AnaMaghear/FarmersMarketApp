@@ -53,4 +53,9 @@ public class BuyProductController {
         }
     }
 
+    @FXML
+    public void handleConfirmAction() {
+
+    }
+
 }
