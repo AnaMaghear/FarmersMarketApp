@@ -120,4 +120,9 @@ public class Farmer {
             if (Objects.equals(id, p.getId()))
                 products.set(products.indexOf(p), editedProduct);
     }
+
+    @Override
+    public String toString() {
+        return "" + firstName + " " +  lastName + "; " + address;
+    }
 }

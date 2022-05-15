@@ -55,7 +55,6 @@ public class ProductService {
                 if (f.getAddress().contains(search))
                     shownProducts.addAll(f.getProducts());
         }
-
         return shownProducts;
     }
 

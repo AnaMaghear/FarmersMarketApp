@@ -45,4 +45,26 @@ public class FarmerService {
             }
         }
     }
+
+    public static ArrayList<Farmer> filter(String search, String filterBy) {
+        ArrayList<Farmer> shownFarmers = new ArrayList<Farmer>();
+        if (filterBy.equals("product")) {
+            for(Farmer f : farmerRepository.find()) {
+                if (f.getProducts() != null && f.isAvailabilityStatus())
+                    for (Product p : f.getProducts())
+                        if (p.getName().contains(search)) {
+                            shownFarmers.add(f);
+                            break;
+                        }
+            }
+        } else if (filterBy.equals("county")) {
+            for(Farmer f : farmerRepository.find()) {
+                if (f.getProducts() != null && f.isAvailabilityStatus())
+                    if (f.getAddress().contains(search)) {
+                        shownFarmers.add(f);
+                    }
+            }
+        }
+        return shownFarmers;
+    }
 }
