@@ -13,6 +13,7 @@ public class Order {
     private double quantity;
     private double totalprice;
     private OrderStatusEnum status;
+    private String deliveryMethod;
 
     @Override
     public boolean equals(Object o) {
@@ -78,11 +79,12 @@ public class Order {
     public Order() {
     }
 
-    public Order(Product product, Consumer consumer, double quantity, double totalprice, OrderStatusEnum status) {
+    public Order(Product product, Consumer consumer, double quantity, double totalprice, OrderStatusEnum status, String deliveryMethod) {
         this.product = product;
         this.consumer = consumer;
         this.quantity = quantity;
         this.totalprice = totalprice;
         this.status = status;
+        this.deliveryMethod = deliveryMethod;
     }
 }

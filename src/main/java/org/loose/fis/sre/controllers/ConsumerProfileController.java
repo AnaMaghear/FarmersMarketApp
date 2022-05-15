@@ -78,15 +78,5 @@ public class ConsumerProfileController {
         }
     }
 
-    @FXML
-    public void handleEditProfile(){
-        try{
-            Main m = new Main();
-            m.changeScene("editConsumer.fxml");
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
 
 }

@@ -5,6 +5,9 @@ import org.dizitart.no2.objects.Id;
 import java.util.Objects;
 
 public class Consumer {
+    public Consumer() {
+    }
+
     @Id
     private String username;
     private String firstName;

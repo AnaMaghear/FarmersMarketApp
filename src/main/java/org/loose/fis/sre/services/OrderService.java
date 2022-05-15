@@ -9,13 +9,13 @@ import org.loose.fis.sre.model.*;
 public class OrderService {
     private static ObjectRepository<Order> orderRepository = UserService.getOrderRepository();
 
-    public static void addOrder(Product p, Consumer c, String quantity) throws NotANumberException, QuantityNotAvailableException, EmptyFieldsException {
+    public static void addOrder(Product p, Consumer c, String quantity, String deliveryMethod) throws NotANumberException, QuantityNotAvailableException, EmptyFieldsException {
         checkQuantity(p, quantity);
         double q = Double.parseDouble(quantity);
-        orderRepository.insert(new Order(p, c, Double.parseDouble(quantity), p.getPricePerUnit() * Double.parseDouble(quantity), OrderStatusEnum.Pending));
+        orderRepository.insert(new Order(p, c, Double.parseDouble(quantity), p.getPricePerUnit() * Double.parseDouble(quantity), OrderStatusEnum.Pending, deliveryMethod));
         ProductService.updateProductById(p.getId(), p.getName(), p.getDescription(), String.valueOf(p.getQuantity() - q), String.valueOf(p.getPricePerUnit()));
 
-        if (p.getQuantity() == 0)
+        if (p.getQuantity() - q == 0)
             ProductService.removeProduct(p.getId());
     }
 
