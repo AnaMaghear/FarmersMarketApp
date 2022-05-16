@@ -19,8 +19,8 @@ public class Farmer {
     private boolean availabilityStatus;
     private ArrayList<Product> products;
 
-    public ArrayList<Order> pendingOrders;
-    public ArrayList<Order> orderHistory;
+    private ArrayList<Order> pendingOrders;
+    private ArrayList<Order> orderHistory;
 
     public ArrayList<Product> getProducts() {
         return products;

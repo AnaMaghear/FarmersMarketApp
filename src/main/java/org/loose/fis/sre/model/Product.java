@@ -77,6 +77,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return MessageFormat.format("{0}; {1}; {2} unitati; {3} RON/unitate", name, description, quantity, pricePerUnit);
+        return MessageFormat.format("{0}; {1}; {2} RON/unitate", name, description, pricePerUnit);
     }
 }
