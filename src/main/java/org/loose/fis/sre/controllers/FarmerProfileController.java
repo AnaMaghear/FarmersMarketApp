@@ -57,7 +57,7 @@ public class FarmerProfileController {
     public void handleOrdersAction() {
         try {
             Main m = new Main();
-            m.changeScene("farmerOrdersList.fxml");
+            m.changeScene("farmerOrders.fxml");
         } catch (IOException e) {
             errorMessage.setText(e.getMessage());
         }
