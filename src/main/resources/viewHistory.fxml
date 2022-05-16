@@ -14,7 +14,10 @@
             <Font name="Arial Rounded MT Bold" size="36.0" />
          </font>
       </Text>
-      <ListView fx:id="listView" layoutX="40.0" layoutY="79.0" prefHeight="269.0" prefWidth="423.0" />
+      <ListView fx:id="listView" layoutX="40.0" layoutY="79.0" prefHeight="269.0" prefWidth="423.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ListView>
       <Button fx:id="backButton" layoutX="527.0" layoutY="348.0" mnemonicParsing="false" onAction="#handleBackButton" text="Back">
          <font>
             <Font name="Verdana" size="12.0" />

@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import org.loose.fis.sre.Main;
+import org.loose.fis.sre.exceptions.DeclinedOrderCanNotDeliverException;
 import org.loose.fis.sre.model.Order;
 import org.loose.fis.sre.model.OrderStatusEnum;
 import org.loose.fis.sre.services.ConsumerService;
@@ -45,8 +46,8 @@ public class FarmerOrderDetailsController {
 
     @FXML
     public void handleAcceptAction() {
-        OrderService.changeOrderStatus(order.getId(), OrderStatusEnum.Accepted);
         try {
+            OrderService.changeOrderStatus(order.getId(), OrderStatusEnum.Accepted);
             Main m = new Main();
             m.changeScene("farmerPendingOrders.fxml");
         } catch (IOException e) {
@@ -56,8 +57,8 @@ public class FarmerOrderDetailsController {
 
     @FXML
     public void handleRejectAction() {
-        OrderService.changeOrderStatus(order.getId(), OrderStatusEnum.Declined);
         try {
+            OrderService.changeOrderStatus(order.getId(), OrderStatusEnum.Declined);
             Main m = new Main();
             m.changeScene("farmerPendingOrders.fxml");
         } catch (IOException e) {
