@@ -6,10 +6,12 @@ import org.loose.fis.sre.exceptions.NotANumberException;
 import org.loose.fis.sre.exceptions.QuantityNotAvailableException;
 import org.loose.fis.sre.model.*;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 public class OrderService {
     private static ObjectRepository<Order> orderRepository = UserService.getOrderRepository();
-
-    public static Order addOrder(Product p, Consumer c, String quantity, String deliveryMethod) throws NotANumberException, QuantityNotAvailableException, EmptyFieldsException {
+    public static Order addOrder(Product p, String c, String quantity, String deliveryMethod) throws NotANumberException, QuantityNotAvailableException, EmptyFieldsException {
         checkQuantity(p, quantity);
         double q = Double.parseDouble(quantity);
         Order o = new Order(p, c, Double.parseDouble(quantity), p.getPricePerUnit() * Double.parseDouble(quantity), OrderStatusEnum.Pending, deliveryMethod);
@@ -29,5 +31,14 @@ public class OrderService {
 
         if (p.getQuantity() < q)
             throw new QuantityNotAvailableException();
+    }
+
+    public static ArrayList<Order> getAllOrdersByUsername(String username){
+        ArrayList<Order> shownOrders = new ArrayList<Order>();
+        for(Order o : orderRepository.find()) {
+            if (Objects.equals(o.getConsumer(), username))
+                shownOrders.add(o);
+        }
+        return shownOrders;
     }
 }

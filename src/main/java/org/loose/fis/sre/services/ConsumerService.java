@@ -4,6 +4,7 @@ import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.exceptions.EmptyFieldsException;
 import org.loose.fis.sre.model.Consumer;
 import org.loose.fis.sre.model.Farmer;
+import org.loose.fis.sre.model.Order;
 
 import java.util.Objects;
 
