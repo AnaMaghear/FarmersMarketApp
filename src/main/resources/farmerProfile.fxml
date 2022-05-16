@@ -10,9 +10,9 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.FarmerProfileController">
    <children>
-      <Text fx:id="greeting" fill="#6cb45a" layoutX="29.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="544.7999153137207">
+      <Text fx:id="greeting" fill="#6cb45a" layoutX="28.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="544.7999153137207">
          <font>
-            <Font name="Arial Rounded MT Bold" size="26.0" />
+            <Font name="Arial Rounded MT Bold" size="48.0" />
          </font>
       </Text>
       <ImageView fitHeight="102.0" fitWidth="149.0" layoutX="15.0" layoutY="245.0">
@@ -58,5 +58,10 @@
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font></Text>
+      <Button fx:id="logOutButton" layoutX="487.0" layoutY="354.0" mnemonicParsing="false" onAction="#handleLogOutAction" text="Log out">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

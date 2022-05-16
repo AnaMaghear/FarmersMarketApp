@@ -22,6 +22,8 @@ public class FarmerProfileController {
     private Button ordersButton;
     @FXML
     private Text errorMessage;
+    @FXML
+    private Button logOutButton;
 
     @FXML
     public void initialize() {
@@ -60,6 +62,16 @@ public class FarmerProfileController {
             m.changeScene("farmerOrders.fxml");
         } catch (IOException e) {
             errorMessage.setText(e.getMessage());
+        }
+    }
+
+    @FXML
+    public void handleLogOutAction() {
+        try{
+            Main m = new Main();
+            m.changeScene("login.fxml");
+        }catch (IOException e){
+            e.printStackTrace();
         }
     }
 }

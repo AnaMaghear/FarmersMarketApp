@@ -73,4 +73,14 @@ public class FarmerEditController {
         else
             availabilityText.setText("Busy");
     }
+
+    @FXML
+    public void handleBackAction() {
+        try {
+            Main m = new Main();
+            m.changeScene("farmerProfile.fxml");
+        } catch (IOException e) {
+            errorMessage.setText(e.getMessage());
+        }
+    }
 }

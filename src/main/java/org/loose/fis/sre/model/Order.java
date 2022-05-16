@@ -78,7 +78,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return product + " x " + quantity + "; " + totalprice + " RON; Status: " + status + " Method: " + deliveryMethod;
+        return product + " x " + quantity + "; " + totalprice + " RON; Status: " + status + "; Method: " + deliveryMethod;
     }
 
     public OrderStatusEnum getStatus() {
