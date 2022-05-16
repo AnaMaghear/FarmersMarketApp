@@ -10,9 +10,9 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.OrderDetailsController">
    <children>
-      <Text fx:id="productName" layoutX="71.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NumeProdus">
+      <Text fx:id="productName" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NumeProdus" textAlignment="CENTER" wrappingWidth="600.6666666666666">
          <font>
-            <Font name="Arial Rounded MT Bold" size="18.0" />
+            <Font name="Arial Rounded MT Bold" size="36.0" />
          </font>
       </Text>
       <Text layoutX="70.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity:" wrappingWidth="102.24673461914062">
@@ -32,17 +32,17 @@
       </Text>
       <Text fx:id="quantity" layoutX="159.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
-            <Font name="Georgia" size="24.0" />
+            <Font name="Georgia" size="20.0" />
          </font>
       </Text>
       <Text fx:id="totalPrice" layoutX="177.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
-            <Font name="Georgia" size="24.0" />
+            <Font name="Georgia" size="20.0" />
          </font>
       </Text>
       <Text fx:id="deliveryMethod" layoutX="229.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
-            <Font name="Georgia" size="24.0" />
+            <Font name="Georgia" size="20.0" />
          </font>
       </Text>
       <ImageView fitHeight="229.0" fitWidth="282.0" layoutX="179.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
@@ -54,11 +54,14 @@
          <font>
             <Font name="Verdana" size="12.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Text fx:id="errorMessage" layoutX="42.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <Button fx:id="orderStatus" layoutX="70.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleOrderStatus" prefHeight="39.0" prefWidth="185.0" text="Mark as delivered">
+      <Button fx:id="orderStatus" layoutX="70.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleOrderStatus" prefHeight="39.0" prefWidth="177.0" text="Mark as delivered">
          <font>
-            <Font name="Verdana" size="17.0" />
+            <Font name="Verdana" size="15.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />

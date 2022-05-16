@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.FarmerDetailsController">
    <children>
-      <Text fx:id="lastname" fill="#408d2c" layoutX="73.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nume fermier">
+      <Text fx:id="lastname" fill="#408d2c" layoutX="73.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nume fermier">
          <font>
             <Font name="Arial Rounded MT Bold" size="18.0" />
          </font>
@@ -43,12 +46,15 @@
             <Font name="Georgia" size="13.0" />
          </font>
       </Text>
-      <Text fx:id="firstname" fill="#408d2c" layoutX="212.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenumer Fermier" wrappingWidth="174.17193603515625">
+      <Text fx:id="firstname" fill="#408d2c" layoutX="73.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenumer Fermier" wrappingWidth="174.17193603515625">
          <font>
             <Font name="Arial Rounded MT Bold" size="18.0" />
          </font>
       </Text>
-      <ListView fx:id="listView" layoutX="73.0" layoutY="144.0" prefHeight="234.0" prefWidth="440.0" />
+      <ListView fx:id="listView" layoutX="73.0" layoutY="144.0" prefHeight="234.0" prefWidth="440.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ListView>
       <Text fill="#408d2c" layoutX="73.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Farmer's products:" wrappingWidth="174.17193603515625">
          <font>
             <Font name="Arial Rounded MT Bold" size="18.0" />
@@ -58,7 +64,15 @@
          <font>
             <Font name="Verdana" size="12.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Text fx:id="errorMessage" layoutX="73.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <ImageView fitHeight="129.0" fitWidth="161.0" layoutX="428.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/istockphoto-513986372-612x612.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
