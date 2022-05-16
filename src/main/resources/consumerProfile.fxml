@@ -27,7 +27,7 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <Button fx:id="searchButton" layoutX="434.0" layoutY="41.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="26.0" prefWidth="43.0" style="-fx-background-color: #ADD8E6; -fx-border-color: #000000;" text="🔎">
+      <Button fx:id="searchButton" layoutX="434.0" layoutY="42.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="26.0" prefWidth="43.0" style="-fx-background-color: #ADD8E6; -fx-border-color: #000000;" text="🔎">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
