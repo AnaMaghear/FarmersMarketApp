@@ -32,7 +32,7 @@ public class FarmerOrderHistoryDetailsController {
     public void initialize() {
         order = OrderService.getOrderById(OrderIdTransporterService.getId());
         productName.setText(order.getProduct().getName());
-        quantity.setText(String.valueOf(order.getProduct().getQuantity()));
+        quantity.setText(String.valueOf(order.getQuantity()));
         deliveryMethod.setText(order.getDeliveryMethod());
         totalPrice.setText(String.valueOf(order.getTotalprice()));
         consumerName.setText(ConsumerService.getConsumerByOrderId(order.getId()).getFirstName() + " " + ConsumerService.getConsumerByOrderId(order.getId()).getLastName());

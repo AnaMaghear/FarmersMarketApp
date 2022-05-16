@@ -32,6 +32,8 @@ public class ConsumerProfileController {
     private ListView<Farmer> listView;
     @FXML
     private Text errorMessage;
+    @FXML
+    private Button logOutButton;
 
     @FXML
     public void initialize(){
@@ -78,5 +80,13 @@ public class ConsumerProfileController {
         }
     }
 
-
+    @FXML
+    public void handleLogOutAction() {
+        try{
+            Main m = new Main();
+            m.changeScene("login.fxml");
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 }
