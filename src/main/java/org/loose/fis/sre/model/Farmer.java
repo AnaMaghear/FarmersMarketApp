@@ -19,6 +19,9 @@ public class Farmer {
     private boolean availabilityStatus;
     private ArrayList<Product> products;
 
+    public ArrayList<Order> pendingOrders;
+    public ArrayList<Order> orderHistory;
+
     public ArrayList<Product> getProducts() {
         return products;
     }
@@ -33,9 +36,22 @@ public class Farmer {
         this.availabilityStatus = availabilityStatus;
         
         products = new ArrayList<>();
+        pendingOrders = new ArrayList<>();
+        orderHistory = new ArrayList<>();
+    }
+
+    public ArrayList<Order> getPendingOrders() {
+        return pendingOrders;
+    }
+
+    public ArrayList<Order> getOrderHistory() {
+        return orderHistory;
     }
 
     public Farmer() {
+        products = new ArrayList<>();
+        pendingOrders = new ArrayList<>();
+        orderHistory = new ArrayList<>();
     }
 
     public String getUsername() {
@@ -124,7 +140,17 @@ public class Farmer {
     public void removeProduct(NitriteId id) {
         products.removeIf(p -> Objects.equals(p.getId(), id));
     }
-  
+
+    public void addOrderToFarmer(Order o) { pendingOrders.add(o); orderHistory.add(o); }
+    public void changeOrderStatus(NitriteId id, OrderStatusEnum status) {
+        pendingOrders.removeIf(o -> Objects.equals(o.getId(), id));
+
+        for (Order o : orderHistory)
+            if (Objects.equals(o.getId(), id)) {
+                o.setStatus(status);
+            }
+    }
+
     @Override
     public String toString() {
         return "" + firstName + " " +  lastName + "; " + address;
