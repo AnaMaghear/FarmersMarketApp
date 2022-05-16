@@ -63,14 +63,14 @@ public class BuyProductController {
             p = ProductService.getProductById(ProductIdTransporterService.getProductId());
             String username = UserNameTransporterService.getUsername().getText();
             Consumer c = ConsumerService.getConsumerByUsername(username);
-            OrderService.addOrder(p, c, desiredAmount.getText(), (String) pickUp.getSelectionModel().getSelectedItem());
+            FarmerService.addOrderToFarmer(p, c, desiredAmount.getText(), (String) pickUp.getSelectionModel().getSelectedItem());
+
+
             Main m = new Main();
             m.changeScene("farmerDetails.fxml");
         } catch (Exception e) {
             errorMessage.setText(e.getMessage());
         }
-
-
     }
 
 }

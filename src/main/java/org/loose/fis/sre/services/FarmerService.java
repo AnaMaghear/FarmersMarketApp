@@ -1,10 +1,14 @@
 package org.loose.fis.sre.services;
 
 import javafx.scene.control.Toggle;
+import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.exceptions.EmptyFieldsException;
 import org.loose.fis.sre.exceptions.NotANumberException;
+import org.loose.fis.sre.exceptions.QuantityNotAvailableException;
+import org.loose.fis.sre.model.Consumer;
 import org.loose.fis.sre.model.Farmer;
+import org.loose.fis.sre.model.Order;
 import org.loose.fis.sre.model.Product;
 
 import java.io.IOException;
@@ -46,10 +50,31 @@ public class FarmerService {
         }
     }
 
+    public static void addOrderToFarmer(Product p, Consumer c, String quantity, String deliveryMethod) throws NotANumberException, QuantityNotAvailableException, EmptyFieldsException {
+        Order o = OrderService.addOrder(p, c, quantity, deliveryMethod);
+
+        Farmer f = getFarmerByProductId(p.getId());
+        f.addOrderToFarmer(o);
+        farmerRepository.update(f);
+    }
+
     public static Farmer getFarmerByUsername(String username){
         for(Farmer f : farmerRepository.find())
             if(Objects.equals(f.getUsername(), username))
                 return f;
+        return new Farmer();
+    }
+
+    public static Farmer getFarmerByProductId(NitriteId id) {
+        for (Farmer f : farmerRepository.find()) {
+            if (f.getProducts() != null) {
+                for (Product p : f.getProducts())
+                    if (Objects.equals(id, p.getId())) {
+                        return f;
+                    }
+            }
+        }
+
         return new Farmer();
     }
 
@@ -75,7 +100,7 @@ public class FarmerService {
             for(Farmer f : farmerRepository.find()) {
                 if (f.getProducts() != null && f.isAvailabilityStatus())
                     for (Product p : f.getProducts())
-                        if (p.getName().contains(search)) {
+                        if (p.getName().contains(search) && p.getQuantity() > 0) {
                             shownFarmers.add(f);
                             break;
                         }
