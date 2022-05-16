@@ -32,17 +32,17 @@
       </Text>
       <Text fx:id="quantity" layoutX="159.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
-            <Font name="Georgia" size="13.0" />
+            <Font name="Georgia" size="24.0" />
          </font>
       </Text>
       <Text fx:id="totalPrice" layoutX="177.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
-            <Font name="Georgia" size="13.0" />
+            <Font name="Georgia" size="24.0" />
          </font>
       </Text>
       <Text fx:id="deliveryMethod" layoutX="229.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
-            <Font name="Georgia" size="13.0" />
+            <Font name="Georgia" size="24.0" />
          </font>
       </Text>
       <ImageView fitHeight="229.0" fitWidth="282.0" layoutX="179.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
@@ -56,7 +56,7 @@
          </font>
       </Button>
       <Text fx:id="errorMessage" layoutX="42.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <Button layoutX="70.0" layoutY="200.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="185.0" text="Mark as delivered">
+      <Button fx:id="orderStatus" layoutX="70.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleOrderStatus" prefHeight="39.0" prefWidth="185.0" text="Mark as delivered">
          <font>
             <Font name="Verdana" size="17.0" />
          </font>
