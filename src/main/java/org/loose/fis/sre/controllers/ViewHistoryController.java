@@ -29,6 +29,7 @@ public class ViewHistoryController {
     @FXML
     private Text errorMessage;
 
+
     @FXML
     public void handleBackButton(){
         try{
