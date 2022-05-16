@@ -23,6 +23,14 @@ public class Order {
         return Double.compare(order.quantity, quantity) == 0 && Double.compare(order.totalprice, totalprice) == 0 && Objects.equals(id, order.id) && Objects.equals(product, order.product) && Objects.equals(consumer, order.consumer) && status == order.status;
     }
 
+    public String getDeliveryMethod() {
+        return deliveryMethod;
+    }
+
+    public void setDeliveryMethod(String deliveryMethod) {
+        this.deliveryMethod = deliveryMethod;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(id, product, consumer, quantity, totalprice, status);
