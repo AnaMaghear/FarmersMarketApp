@@ -23,15 +23,16 @@ public class OrderDetailsController {
     @FXML
     private Text deliveryMethod;
     @FXML
-    private ChoiceBox orderStatus;
+    private Button orderStatus;
     @FXML
     private Text errorMessage;
     @FXML
     private Button backButton;
     @FXML
     public void initialize(){
-
+        orderId = OrderIdTransporterService.getId();
     }
+
     @FXML
     public void handleBackButton(){
         try{
