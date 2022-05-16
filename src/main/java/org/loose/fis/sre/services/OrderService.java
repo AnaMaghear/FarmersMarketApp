@@ -1,5 +1,6 @@
 package org.loose.fis.sre.services;
 
+import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.exceptions.EmptyFieldsException;
 import org.loose.fis.sre.exceptions.NotANumberException;
@@ -11,6 +12,8 @@ import java.util.Objects;
 
 public class OrderService {
     private static ObjectRepository<Order> orderRepository = UserService.getOrderRepository();
+    private static ObjectRepository<Farmer> farmerRepository = UserService.getFarmerRepository();
+
     public static Order addOrder(Product p, String c, String quantity, String deliveryMethod) throws NotANumberException, QuantityNotAvailableException, EmptyFieldsException {
         checkQuantity(p, quantity);
         double q = Double.parseDouble(quantity);
@@ -40,5 +43,37 @@ public class OrderService {
                 shownOrders.add(o);
         }
         return shownOrders;
+    }
+
+    public static Order getOrderById(NitriteId id) {
+        for(Order o : orderRepository.find())
+            if (Objects.equals(o.getId(), id))
+                return o;
+
+        return new Order();
+    }
+
+    public static void changeOrderStatus(NitriteId id, OrderStatusEnum status) {
+        Order o = OrderService.getOrderById(id);
+        o.setStatus(status);
+        orderRepository.update(o);
+
+        for (Farmer f : farmerRepository.find()) {
+            if (status == OrderStatusEnum.Delivered) {
+                for (Order order : f.getOrderHistory())
+                    if (Objects.equals(order.getId(), id)) {
+                        f.changeOrderStatus(id, o);
+                        farmerRepository.update(f);
+                        break;
+                    }
+            } else {
+                for (Order order : f.getPendingOrders())
+                    if (Objects.equals(order.getId(), id)) {
+                        f.changeOrderStatus(id, o);
+                        farmerRepository.update(f);
+                        break;
+                    }
+            }
+        }
     }
 }

@@ -141,14 +141,12 @@ public class Farmer {
         products.removeIf(p -> Objects.equals(p.getId(), id));
     }
 
-    public void addOrderToFarmer(Order o) { pendingOrders.add(o); orderHistory.add(o); }
-    public void changeOrderStatus(NitriteId id, OrderStatusEnum status) {
+    public void addOrderToFarmer(Order o) { pendingOrders.add(o); }
+
+    public void changeOrderStatus(NitriteId id, Order edited) {
         pendingOrders.removeIf(o -> Objects.equals(o.getId(), id));
 
-        for (Order o : orderHistory)
-            if (Objects.equals(o.getId(), id)) {
-                o.setStatus(status);
-            }
+        orderHistory.add(edited);
     }
 
     @Override
