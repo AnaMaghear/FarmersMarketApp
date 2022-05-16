@@ -1,5 +1,7 @@
 package org.loose.fis.sre.services;
 
+import org.dizitart.no2.Nitrite;
+import org.dizitart.no2.NitriteId;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.exceptions.EmptyFieldsException;
 import org.loose.fis.sre.model.Consumer;
@@ -25,6 +27,15 @@ public class ConsumerService {
         for (Consumer c : consumerRepository.find())
             if(Objects.equals(c.getUsername(), username))
                 return c;
+        return new Consumer();
+    }
+
+    public static Consumer getConsumerByOrderId(NitriteId id) {
+        for (Consumer c : consumerRepository.find())
+            for (Order o : c.getPastOrders())
+                if (Objects.equals(o.getId(), id))
+                    return c;
+
         return new Consumer();
     }
 
