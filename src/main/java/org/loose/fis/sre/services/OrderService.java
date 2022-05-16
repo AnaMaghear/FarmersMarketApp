@@ -64,12 +64,14 @@ public class OrderService {
                     if (Objects.equals(order.getId(), id)) {
                         f.changeOrderStatus(id, o);
                         farmerRepository.update(f);
+                        break;
                     }
             } else {
                 for (Order order : f.getPendingOrders())
                     if (Objects.equals(order.getId(), id)) {
                         f.changeOrderStatus(id, o);
                         farmerRepository.update(f);
+                        break;
                     }
             }
         }
