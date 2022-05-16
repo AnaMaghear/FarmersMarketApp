@@ -68,7 +68,10 @@ public class Order {
         this.totalprice = totalprice;
     }
 
-
+    @Override
+    public String toString() {
+        return product + " x " + quantity + "; " + totalprice + " RON; Status: " + status + " Method: " + deliveryMethod;
+    }
 
     public OrderStatusEnum getStatus() {
         return status;
