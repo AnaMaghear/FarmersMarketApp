@@ -17,7 +17,7 @@ import java.util.Objects;
 
 public class FarmerService {
     private static ObjectRepository<Farmer> farmerRepository = UserService.getFarmerRepository();
-
+    private static ObjectRepository<Consumer> consumerRepository = UserService.getConsumerRepository();
     public static void addFarmer(String username, String firstName, String lastName, String description, String address, String phone, boolean availabilityStatus) throws EmptyFieldsException {
         checkIfFieldsEmpty(username, firstName, lastName, description, address, phone);
         farmerRepository.insert(new Farmer(username, firstName, lastName, description, address, phone, availabilityStatus));
@@ -51,11 +51,14 @@ public class FarmerService {
     }
 
     public static void addOrderToFarmer(Product p, Consumer c, String quantity, String deliveryMethod) throws NotANumberException, QuantityNotAvailableException, EmptyFieldsException {
-        Order o = OrderService.addOrder(p, c, quantity, deliveryMethod);
+        Order o = OrderService.addOrder(p, c.getUsername(), quantity, deliveryMethod);
 
         Farmer f = getFarmerByProductId(p.getId());
         f.addOrderToFarmer(o);
+        c.addOrderToConsumer(o);
         farmerRepository.update(f);
+        consumerRepository.update(c);
+
     }
 
     public static Farmer getFarmerByUsername(String username){

@@ -2,11 +2,11 @@ package org.loose.fis.sre.model;
 
 import org.dizitart.no2.objects.Id;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Consumer {
-    public Consumer() {
-    }
+
 
     @Id
     private String username;
@@ -14,6 +14,7 @@ public class Consumer {
     private String lastName;
     private String address;
     private String phone;
+    private ArrayList<Order> pastOrders;
 
     public Consumer(String username, String firstName, String lastName, String address, String phone) {
         this.username = username;
@@ -21,6 +22,18 @@ public class Consumer {
         this.lastName = lastName;
         this.address = address;
         this.phone = phone;
+        pastOrders = new ArrayList<Order>();
+    }
+    public Consumer() {
+        pastOrders = new ArrayList<Order>();
+    }
+
+    public ArrayList<Order> getPastOrders() {
+        return pastOrders;
+    }
+
+    public void addOrderToConsumer(Order o) {
+        pastOrders.add(o);
     }
 
     public String getUsername() {

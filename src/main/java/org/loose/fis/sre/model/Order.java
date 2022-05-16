@@ -9,7 +9,7 @@ public class Order {
     @Id
     private NitriteId id;
     private Product product;
-    private Consumer consumer;
+    private String consumer;
     private double quantity;
     private double totalprice;
     private OrderStatusEnum status;
@@ -44,11 +44,11 @@ public class Order {
         this.product = product;
     }
 
-    public Consumer getConsumer() {
+    public String getConsumer() {
         return consumer;
     }
 
-    public void setConsumer(Consumer consumer) {
+    public void setConsumer(String consumer) {
         this.consumer = consumer;
     }
 
@@ -79,7 +79,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(Product product, Consumer consumer, double quantity, double totalprice, OrderStatusEnum status, String deliveryMethod) {
+    public Order(Product product, String consumer, double quantity, double totalprice, OrderStatusEnum status, String deliveryMethod) {
         this.product = product;
         this.consumer = consumer;
         this.quantity = quantity;

@@ -9,7 +9,7 @@ import org.loose.fis.sre.model.*;
 public class OrderService {
     private static ObjectRepository<Order> orderRepository = UserService.getOrderRepository();
 
-    public static Order addOrder(Product p, Consumer c, String quantity, String deliveryMethod) throws NotANumberException, QuantityNotAvailableException, EmptyFieldsException {
+    public static Order addOrder(Product p, String c, String quantity, String deliveryMethod) throws NotANumberException, QuantityNotAvailableException, EmptyFieldsException {
         checkQuantity(p, quantity);
         double q = Double.parseDouble(quantity);
         Order o = new Order(p, c, Double.parseDouble(quantity), p.getPricePerUnit() * Double.parseDouble(quantity), OrderStatusEnum.Pending, deliveryMethod);
