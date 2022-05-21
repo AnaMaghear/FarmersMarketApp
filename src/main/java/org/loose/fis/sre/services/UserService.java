@@ -24,10 +24,11 @@ public class UserService {
     private static ObjectRepository<Farmer> farmerRepository;
     private static ObjectRepository<Consumer> consumerRepository;
     private static ObjectRepository<Product> productRepository;
-    public static ObjectRepository<Order> orderRepository;
+    private static ObjectRepository<Order> orderRepository;
+    private static Nitrite database;
     public static void initDatabase() {
         FileSystemService.initDirectory();
-        Nitrite database = Nitrite.builder()
+        database = Nitrite.builder()
                 .filePath(getPathToFile("FarmersMarket.db").toFile())
                 .openOrCreate("test", "test");
 
@@ -36,6 +37,10 @@ public class UserService {
         consumerRepository = database.getRepository(Consumer.class);
         productRepository = database.getRepository(Product.class);
         orderRepository = database.getRepository(Order.class);
+    }
+
+    public static void closeDatabase() {
+        database.close();
     }
 
     public static ObjectRepository<Consumer> getConsumerRepository() {

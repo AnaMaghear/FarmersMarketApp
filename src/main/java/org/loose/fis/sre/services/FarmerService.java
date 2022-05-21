@@ -28,6 +28,13 @@ public class FarmerService {
             throw new EmptyFieldsException();
     }
 
+    public static ArrayList<Farmer> getAllFarmers() {
+        ArrayList<Farmer> array = new ArrayList<>();
+        for (Farmer f : farmerRepository.find())
+            array.add(f);
+
+        return array;
+    }
     public static ArrayList<Product> getAllProductsByUsername(String username) {
         for (Farmer farmer : farmerRepository.find()) {
             if (Objects.equals(username, farmer.getUsername())) {
