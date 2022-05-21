@@ -20,7 +20,12 @@ public class Order {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
-        return Double.compare(order.quantity, quantity) == 0 && Double.compare(order.totalprice, totalprice) == 0 && Objects.equals(id, order.id) && Objects.equals(product, order.product) && Objects.equals(consumer, order.consumer) && status == order.status;
+        return Double.compare(order.quantity, quantity) == 0 && Double.compare(order.totalprice, totalprice) == 0 && id.equals(order.id) && product.equals(order.product) && consumer.equals(order.consumer) && status == order.status && deliveryMethod.equals(order.deliveryMethod);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, product, consumer, quantity, totalprice, status, deliveryMethod);
     }
 
     public String getDeliveryMethod() {
@@ -31,10 +36,6 @@ public class Order {
         this.deliveryMethod = deliveryMethod;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, product, consumer, quantity, totalprice, status);
-    }
 
     public NitriteId getId() {
         return id;

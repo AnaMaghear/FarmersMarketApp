@@ -8,6 +8,7 @@ import org.loose.fis.sre.model.Consumer;
 import org.loose.fis.sre.model.Farmer;
 import org.loose.fis.sre.model.Order;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class ConsumerService {
@@ -39,4 +40,10 @@ public class ConsumerService {
         return new Consumer();
     }
 
+    public static ArrayList<Consumer> getAllConsumers(){
+        ArrayList<Consumer> temp = new ArrayList<Consumer>();
+        for(Consumer c : consumerRepository.find())
+            temp.add(c);
+        return temp;
+    }
 }
