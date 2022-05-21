@@ -22,6 +22,7 @@ class UserServiceTest {
     @AfterAll
     static void afterAll() {
         System.out.println("After Class");
+//        UserService.closeDatabase();
     }
 
     @BeforeEach

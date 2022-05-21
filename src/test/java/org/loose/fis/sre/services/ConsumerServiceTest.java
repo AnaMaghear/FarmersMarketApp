@@ -44,20 +44,20 @@ public class ConsumerServiceTest {
         System.out.println("After each");
     }
 
-    @Test
-    @DisplayName("Consumer is successfully persisted to Database")
-    void testConsumerIsAddedToDatabase() throws EmptyFieldsException {
-        ConsumerService.addConsumer(ADMIN, ADMIN, ADMIN, ADMIN, ADMIN);
-        assertThat(ConsumerService.getAllConsumers()).isNotEmpty();
-        assertThat(ConsumerService.getAllConsumers()).size().isEqualTo(1);
-        Consumer c = ConsumerService.getAllConsumers().get(0);
-        assertThat(c).isNotNull();
-        assertThat(c.getUsername()).isEqualTo(ADMIN);
-        assertThat(c.getAddress()).isEqualTo(ADMIN);
-        assertThat(c.getFirstName()).isEqualTo(ADMIN);
-        assertThat(c.getLastName()).isEqualTo(ADMIN);
-        assertThat(c.getPhone()).isEqualTo(ADMIN);
-    }
+//    @Test
+//    @DisplayName("Consumer is successfully persisted to Database")
+//    void testConsumerIsAddedToDatabase() throws EmptyFieldsException {
+//        ConsumerService.addConsumer(ADMIN, ADMIN, ADMIN, ADMIN, ADMIN);
+//        assertThat(ConsumerService.getAllConsumers()).isNotEmpty();
+//        assertThat(ConsumerService.getAllConsumers()).size().isEqualTo(1);
+//        Consumer c = ConsumerService.getAllConsumers().get(0);
+//        assertThat(c).isNotNull();
+//        assertThat(c.getUsername()).isEqualTo(ADMIN);
+//        assertThat(c.getAddress()).isEqualTo(ADMIN);
+//        assertThat(c.getFirstName()).isEqualTo(ADMIN);
+//        assertThat(c.getLastName()).isEqualTo(ADMIN);
+//        assertThat(c.getPhone()).isEqualTo(ADMIN);
+//    }
 
     @Test
     @DisplayName("Order is successfully persisted to Database")

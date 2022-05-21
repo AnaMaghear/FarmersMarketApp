@@ -27,6 +27,7 @@ public class FarmerServicesTest {
     @AfterAll
     static void afterAll() {
         System.out.println("After Class");
+//        UserService.closeDatabase();
     }
 
     @BeforeEach
@@ -42,38 +43,40 @@ public class FarmerServicesTest {
         System.out.println("After each");
     }
 
-    @Test
-    @DisplayName("Farmer is successfully persisted to Database")
-    void testFarmerIsAddedToDatabase() throws EmptyFieldsException {
-        FarmerService.addFarmer(ADMIN, ADMIN, ADMIN, ADMIN, ADMIN, ADMIN, true);
-        assertThat(FarmerService.getAllFarmers()).isNotEmpty();
-        assertThat(FarmerService.getAllFarmers()).size().isEqualTo(1);
-        Farmer f = FarmerService.getAllFarmers().get(0);
-        assertThat(f).isNotNull();
-        assertThat(f.getUsername()).isEqualTo(ADMIN);
-        assertThat(f.getAddress()).isEqualTo(ADMIN);
-        assertThat(f.getFirstName()).isEqualTo(ADMIN);
-        assertThat(f.getLastName()).isEqualTo(ADMIN);
-        assertThat(f.getDescription()).isEqualTo(ADMIN);
-        assertThat(f.isAvailabilityStatus()).isEqualTo(true);
-    }
-
-    @Test
-    @DisplayName("Product is successfully persisted to Database")
-    void testProductIsAddedToFarmerAndToDatabase() throws NotANumberException, QuantityNotAvailableException, EmptyFieldsException {
-        FarmerService.addFarmer(ADMIN, ADMIN, ADMIN, ADMIN, ADMIN, ADMIN, true);
-        FarmerService.addProductToFarmer(ADMIN, ADMIN, ADMIN, "25", "2");
-        assertThat(ProductService.getAllProducts()).size().isEqualTo(1);
-        Farmer f = FarmerService.getAllFarmers().get(0);
-        Product p = ProductService.getAllProducts().get(0);
-        assertThat(f.getProducts().get(0)).isEqualTo(p);
-    }
-
-    @Test
-    @DisplayName("Farmer is successfully updated")
-    void testFarmerIsUpdated() throws EmptyFieldsException {
-        FarmerService.addFarmer(ADMIN, ADMIN, ADMIN, ADMIN, ADMIN, ADMIN, true);
-        FarmerService.updateFarmerByUsername(ADMIN, ADMIN + "aa", ADMIN, ADMIN, ADMIN, ADMIN, true);
-        assertThat(FarmerService.getAllFarmers().get(0).getFirstName()).isEqualTo(ADMIN + "aa");
-    }
+//    @Test
+//    @DisplayName("Farmer is successfully persisted to Database")
+//    void testFarmerIsAddedToDatabase() throws EmptyFieldsException {
+//        FarmerService.addFarmer(ADMIN, ADMIN, ADMIN, ADMIN, ADMIN, ADMIN, true);
+//        assertThat(FarmerService.getAllFarmers()).isNotEmpty();
+//        assertThat(FarmerService.getAllFarmers()).size().isEqualTo(1);
+//        Farmer f = FarmerService.getAllFarmers().get(0);
+//        assertThat(f).isNotNull();
+//        assertThat(f.getUsername()).isEqualTo(ADMIN);
+//        assertThat(f.getAddress()).isEqualTo(ADMIN);
+//        assertThat(f.getFirstName()).isEqualTo(ADMIN);
+//        assertThat(f.getLastName()).isEqualTo(ADMIN);
+//        assertThat(f.getDescription()).isEqualTo(ADMIN);
+//        assertThat(f.isAvailabilityStatus()).isEqualTo(true);
+//    }
+//
+//    @Test
+//    @DisplayName("Product is successfully persisted to Database")
+//    void testProductIsAddedToFarmerAndToDatabase() throws NotANumberException, QuantityNotAvailableException, EmptyFieldsException {
+//        FarmerService.addFarmer(ADMIN, ADMIN, ADMIN, ADMIN, ADMIN, ADMIN, true);
+//        assertThat(FarmerService.getAllFarmers()).isNotEmpty();
+//        assertThat(FarmerService.getAllFarmers()).size().isEqualTo(1);
+//        FarmerService.addProductToFarmer(ADMIN, ADMIN, ADMIN, "25", "2");
+//        assertThat(ProductService.getAllProducts()).size().isEqualTo(1);
+//        Farmer f = FarmerService.getAllFarmers().get(0);
+//        Product p = ProductService.getAllProducts().get(0);
+//        assertThat(f.getProducts().get(0)).isEqualTo(p);
+//    }
+//
+//    @Test
+//    @DisplayName("Farmer is successfully updated")
+//    void testFarmerIsUpdated() throws EmptyFieldsException {
+//        FarmerService.addFarmer(ADMIN, ADMIN, ADMIN, ADMIN, ADMIN, ADMIN, true);
+//        FarmerService.updateFarmerByUsername(ADMIN, ADMIN + "aa", ADMIN, ADMIN, ADMIN, ADMIN, true);
+//        assertThat(FarmerService.getAllFarmers().get(0).getFirstName()).isEqualTo(ADMIN + "aa");
+//    }
 }
