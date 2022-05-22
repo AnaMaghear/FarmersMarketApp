@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
+import java.util.List;
+
 
 
 public class UserService {
@@ -22,9 +24,11 @@ public class UserService {
     private static ObjectRepository<Farmer> farmerRepository;
     private static ObjectRepository<Consumer> consumerRepository;
     private static ObjectRepository<Product> productRepository;
-    public static ObjectRepository<Order> orderRepository;
+    private static ObjectRepository<Order> orderRepository;
+    private static Nitrite database;
     public static void initDatabase() {
-        Nitrite database = Nitrite.builder()
+        FileSystemService.initDirectory();
+        database = Nitrite.builder()
                 .filePath(getPathToFile("FarmersMarket.db").toFile())
                 .openOrCreate("test", "test");
 
@@ -33,6 +37,10 @@ public class UserService {
         consumerRepository = database.getRepository(Consumer.class);
         productRepository = database.getRepository(Product.class);
         orderRepository = database.getRepository(Order.class);
+    }
+
+    public static void closeDatabase() {
+        database.close();
     }
 
     public static ObjectRepository<Consumer> getConsumerRepository() {
@@ -60,6 +68,10 @@ public class UserService {
         userRepository.insert(new User(username, encodePassword(username, password), role));
     }
 
+    public static List<User> getAllUsers() {
+        return userRepository.find().toList();
+    }
+
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
         for (User user : userRepository.find()) {
             if (Objects.equals(username, user.getUsername()))
@@ -67,7 +79,7 @@ public class UserService {
         }
     }
 
-    private static String encodePassword(String salt, String password) {
+    public static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));
 

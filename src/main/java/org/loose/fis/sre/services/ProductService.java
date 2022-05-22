@@ -62,6 +62,14 @@ public class ProductService {
         throw new Exception("no product");
     }
 
+    public static ArrayList<Product> getAllProducts() {
+        ArrayList<Product> products = new ArrayList<>();
+        for (Product p : productRepository.find())
+            products.add(p);
+
+        return products;
+    }
+
     public static void updateProductById(NitriteId id, String name, String description, String quantity, String pricePerUnit) throws NotANumberException, EmptyFieldsException {
         checkIfFieldsAreEmpty(name, description, quantity, pricePerUnit);
         double quantityD;

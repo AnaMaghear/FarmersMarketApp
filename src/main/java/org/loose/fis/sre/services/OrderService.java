@@ -77,4 +77,11 @@ public class OrderService {
             }
         }
     }
+
+    public static ArrayList<Order> getAllOrders(){
+        ArrayList<Order> temp = new ArrayList<Order>();
+        for (Order o : orderRepository.find())
+            temp.add(o);
+        return temp;
+    }
 }
